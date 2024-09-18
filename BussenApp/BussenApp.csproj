@@ -24,7 +24,7 @@
 		<ApplicationTitle>BussenApp</ApplicationTitle>
 
 		<!-- App Identifier -->
-		<ApplicationId>com.companyname.bussenapp</ApplicationId>
+		<ApplicationId>nl.itimo.bussenapp</ApplicationId>
 
 		<!-- Versions -->
 		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
