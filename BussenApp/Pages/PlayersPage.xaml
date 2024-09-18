@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BussenApp.Pages.PlayersPage"
+             xmlns:mi="http://www.aathifmahir.com/dotnet/2022/maui/icons"
+             x:Name="this"
+             Padding="20, 30">
+    <Grid RowSpacing="20" RowDefinitions="50,*,auto">
+        <Label Grid.Row="0" Style="{x:StaticResource Headline}">Spelers</Label>
+
+        <Border StrokeShape="RoundRectangle 10" Grid.Row="1" VerticalOptions="StartAndExpand">
+            <ListView ItemsSource="{Binding Game.Players}" HasUnevenRows="False">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid Padding="30, 10" ColumnDefinitions="*, Auto">
+                                <Label Text="{Binding Name}" FontAttributes="Bold" FontAutoScalingEnabled="True" Grid.Column="0" HorizontalOptions="Start"/>
+                                <ImageButton Grid.Column="1" 
+                                             Source="{mi:MaterialRounded Delete, IconColor='red'}"
+                                             Command="{Binding BindingContext.RemovePlayerCommand, Source={x:Reference this}}"
+                                             CommandParameter="{Binding .}"/>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Border>
+
+        <Grid Grid.Row="2" VerticalOptions="End"  ColumnSpacing="10" RowSpacing="10"
+              ColumnDefinitions="5*,*" RowDefinitions="*, auto">
+            <Entry Placeholder="Naam" Text="{Binding PlayerAddName}" x:Name="PlayerAddName"/>
+            <Button Grid.Column="1" Command="{Binding AddPlayerCommand}" BackgroundColor="Green"
+                    CommandParameter="{Binding Text, Source={x:Reference PlayerAddName}}" 
+                    FontAttributes="Bold" Text="{mi:MaterialRounded Icon=Add, IconSize=20}"/>
+            <Button Grid.ColumnSpan="2" Grid.Row="1" Command="{Binding StartCommand}"
+                    FontAttributes="Bold"
+                    FontSize="Large"
+                    Text="START">
+                <Button.Style>
+                    <Style TargetType="Button"> 
+                        <Style.Triggers>
+                            <DataTrigger TargetType="Button" Binding="{Binding Game.Players.Count}" Value="1">
+                                <Setter Property="IsEnabled" Value="False"/>
+                            </DataTrigger>
+                            <DataTrigger TargetType="Button" Binding="{Binding Game.Players.Count}" Value="0">
+                                <Setter Property="IsEnabled" Value="False"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+        </Grid>
+    </Grid>
+</ContentPage>

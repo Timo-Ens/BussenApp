@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BussenApp.MainPage">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="30, 0"
+            Spacing="25">
+            <Image
+                Margin="-30, 0"
+                Source="peppa_banner.jpeg"
+                Aspect="AspectFit"
+                SemanticProperties.Description="dot net bot in a race car number eight" />
+
+            <Label
+                Text="Welkom bij bussen! 🚍🚍"
+                Style="{StaticResource Headline}"/>
+
+            <Label
+                Text="Bussen is het spel waar je kaarten trekt, gok je fout, dan drink je 🍻"
+                Style="{StaticResource SubHeadline}"/>
+
+            <Button
+                Text="Start " 
+                FontAttributes="Bold"
+                FontSize="28"
+                HorizontalOptions="Fill"
+                VerticalOptions="EndAndExpand"
+                Clicked="OnStartClicked" />
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
